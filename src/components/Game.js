@@ -23,7 +23,6 @@ class Game extends Component {
 
         let { gameState, answer, guesses } = this.props;
 
-        
 
         let incorrectGuesses = guesses.reduce((acc, val) => {
             if (answer.indexOf(val) === -1) {
@@ -94,7 +93,8 @@ const mapStateToProps = (state, ownProps) => {
 	let { game } = state;
     return Object.assign({}, {
     	guesses: game.guesses,
-        answer: game.answer
+        answer: game.answer,
+        gameState: game.status
     });
 }
 

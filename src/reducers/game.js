@@ -59,7 +59,7 @@ const game = (state = { guesses: [] }, action) => {
             if (newState.stats.attemptCount === 15) {
                 newState.status = 'lost';
             }
-            if (newState.stats.attemptCount < 15 && newState.stats.foundLetters.length === newState.stats.wordLength.length){
+            if (newState.stats.attemptCount < 15 && newState.stats.foundLetters === newState.stats.wordLength){
                 newState.status = 'won'
             }
 
@@ -68,7 +68,7 @@ const game = (state = { guesses: [] }, action) => {
         case 'START_NEW_GAME':
             return Object.assign({}, state, {
                 answer: action.value,
-                gameState: 'playing'
+                status: 'playing'
             });
 
         default:

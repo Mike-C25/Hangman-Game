@@ -5,8 +5,8 @@ let Screen = ({ board = [] }) => {
     return (
         <div className = { "screen-word" } >
         	<div className={ 'letters'}>
-        		{ board.map((letter) => (
-        			<span>{ letter }</span>
+        		{ board.map((letter, index) => (
+        			<span key={ index }>{ letter }</span>
         		))}
         	</div>
         </div>
