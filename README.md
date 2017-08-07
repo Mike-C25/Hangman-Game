@@ -1,6 +1,6 @@
 # A Simple Hangman game
 
-####### To start game:
+###### To start game:
 
 ```
 npm install
