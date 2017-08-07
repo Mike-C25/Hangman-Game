@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.test p{
+	display: inline-block;
+	padding: 0px 20px;
+	text-align: center;
+}
+.text{
+	margin: 0px auto;
+	text-align: center;
+}

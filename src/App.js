@@ -5,6 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 import reducers from './reducers';
 
 import Game from './components/Game';
+import './App.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
