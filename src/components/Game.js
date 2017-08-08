@@ -51,7 +51,7 @@ class Game extends Component {
                 ) : null }
 
                 { gameState === 'won' || gameState === 'lost' ? (
-                    <GameOverScreen status={ gameState } />
+                    <GameOverScreen status={ gameState } answer={ answer }/>
                 ) : null }
 			</div>
 
