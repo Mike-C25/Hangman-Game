@@ -5,6 +5,7 @@ const calculateGameStats = (state) => {
     if (!answer || !guesses)
         return {};
 
+
     let foundLetters = answer.split('').reduce((acc, val) => {
         if (val === ' ') {
             return acc;
@@ -26,8 +27,11 @@ const calculateGameStats = (state) => {
     }, [])
 
     let attemptCount = incorrectGuesses.length;
-    let maxAttempts = 15;
-    let wordLength = answer.length;
+    let maxAttempts = 6;
+
+    let tA = answer;
+    tA = tA.replace(/\s/g, '');;
+    let wordLength = tA.length;
 
 
     return {
@@ -56,10 +60,10 @@ const game = (state = { guesses: [] }, action) => {
             let newState = Object.assign({}, state, { guesses: guesses });
             newState.stats = calculateGameStats(newState);
 
-            if (newState.stats.attemptCount === 15) {
+            if (newState.stats.attemptCount === 6) {
                 newState.status = 'lost';
             }
-            if (newState.stats.attemptCount < 15 && newState.stats.foundLetters === newState.stats.wordLength){
+            if (newState.stats.attemptCount < 6 && newState.stats.foundLetters === newState.stats.wordLength) {
                 newState.status = 'won'
             }
 
@@ -68,7 +72,9 @@ const game = (state = { guesses: [] }, action) => {
         case 'START_NEW_GAME':
             return Object.assign({}, state, {
                 answer: action.value,
-                status: 'playing'
+                status: 'playing',
+                guesses: []
+
             });
 
         default:

@@ -30,7 +30,7 @@ const mapStateToProps = (state, ownProps) => {
                 if (guesses.indexOf(letter) !== -1) {
                     return letter + ' ';
                 } else {
-                    return '_    ' ;
+                    return '_ ' ;
                 }
             }
         })
