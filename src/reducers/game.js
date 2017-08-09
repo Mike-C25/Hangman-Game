@@ -10,7 +10,7 @@ const calculateGameStats = (state) => {
         if (val === ' ') {
             return acc;
         } else {
-            if (guesses.indexOf(val) !== -1) {
+            if (guesses.indexOf(val.toLowerCase()) !== -1) {
                 return acc + 1;
             } else {
                 return acc;
@@ -20,7 +20,8 @@ const calculateGameStats = (state) => {
 
 
     let incorrectGuesses = guesses.reduce((acc, val) => {
-        if (answer.indexOf(val) === -1) {
+
+        if (answer.toLowerCase().indexOf(val.toLowerCase()) === -1) {
             acc.push(val);
         }
         return acc;
@@ -49,36 +50,45 @@ const calculateGameStats = (state) => {
 const game = (state = { guesses: [] }, action) => {
     switch (action.type) {
         case 'LETTER_GUESS':
-            // 6: Generate new state with ALL new variables
-            let guesses = [].concat(state.guesses);
-            if (guesses.indexOf(action.letter) === -1) {
-                guesses.push(action.letter);
-            }
-            // 7: Return the new state object
-            // Go back to Game component
+            {
+                // 6: Generate new state with ALL new variables
+                let guesses = [].concat(state.guesses);
+                if (guesses.indexOf(action.letter) === -1) {
+                    guesses.push(action.letter);
+                }
+                // 7: Return the new state object
+                // Go back to Game component
 
-            let newState = Object.assign({}, state, { guesses: guesses });
-            newState.stats = calculateGameStats(newState);
+                let newState = Object.assign({}, state, { guesses: guesses });
+                newState.stats = calculateGameStats(newState);
 
-            if (newState.stats.attemptCount === 6) {
-                newState.status = 'lost';
-            }
-            if (newState.stats.attemptCount < 6 && newState.stats.foundLetters === newState.stats.wordLength) {
-                newState.status = 'won'
-            }
+                if (newState.stats.attemptCount === 6) {
+                    newState.status = 'lost';
+                }
+                if (newState.stats.attemptCount < 6 && newState.stats.foundLetters === newState.stats.wordLength) {
+                    newState.status = 'won'
 
-            return newState;
+                }
+
+                return newState;
+
+            }
 
         case 'START_NEW_GAME':
-            return Object.assign({}, state, {
-                answer: action.value,
-                status: 'playing',
-                guesses: []
+            {
+                let newState = Object.assign({}, state, {
+                    answer: action.answer,
+                    category: action.category,
+                    status: 'playing',
+                    guesses: []
+                });
+                newState.stats = calculateGameStats(newState);
+                return newState;
+            }
 
-            });
 
         default:
-            return state
+            return state;
     }
 }
 

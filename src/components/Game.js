@@ -21,7 +21,7 @@ class Game extends Component {
 
     render() {
 
-        let { gameState, answer, guesses } = this.props;
+        let { gameState, answer, guesses, category } = this.props;
 
 
         let incorrectGuesses = guesses.reduce((acc, val) => {
@@ -45,7 +45,7 @@ class Game extends Component {
                 { gameState === 'playing' ? (
                     <div>
                         <ScoreHeader />
-                        <Screen />
+                        <Screen category={category} />
                         <Guesses />
                     </div>
                 ) : null }
@@ -59,26 +59,6 @@ class Game extends Component {
     }
 }
 
-/*
-                <ol>
-                    { this.props.letters.map((a, i) => (
-                        <li key={ i }>{ a }</li>
-                    )) }
-                </ol>
-                { (this.preops.attemptCount < 15) ? (
-                    <ScoreHeader 
-                        attemptCount={ this.props.letters.length } 
-                        maxAttempts={15} 
-                        wordLength={0} 
-                        foundLetters={0} />
-                ) : (
-                   <GameOverHeader  />
-                ) }
-
-                <Screen 
-                    word={'Movie'} 
-                    numberOfSpaces={9} />
-*/
 
 Game.defaultProps = {
 	letters: [],
@@ -94,6 +74,7 @@ const mapStateToProps = (state, ownProps) => {
     return Object.assign({}, {
     	guesses: game.guesses,
         answer: game.answer,
+        category: game.category,
         gameState: game.status
     });
 }

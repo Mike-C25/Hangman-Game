@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-let Screen = ({ board = [] }) => {
+let Screen = ({ board = [], category = "" }) => {
+
     return (
         <div className = { "screen-word" } >
+            <h3>The themes are currently { category }</h3>
         	<div className={ 'letters'}>
         		{ board.map((letter, index) => (
-        			<span key={ index }>{ letter }</span>
+        			<span key={ index }>{ letter === ' ' ? '\u00A0\u00A0\u00A0': letter}</span>
         		))}
         	</div>
         </div>
@@ -27,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
             if (letter === ' ') {
                 return ' ';
             } else {
-                if (guesses.indexOf(letter) !== -1) {
+                if (guesses.indexOf(letter.toLowerCase()) !== -1) {
                     return letter + ' ';
                 } else {
                     return '_ ' ;
