@@ -5,7 +5,7 @@ let Screen = ({ board = [], category = "" }) => {
 
     return (
         <div className = { "screen-word" } >
-            <h3>The themes are currently { category }</h3>
+            <h3>The theme is currently { category }</h3>
         	<div className={ 'letters'}>
         		{ board.map((letter, index) => (
         			<span key={ index }>{ letter === ' ' ? '\u00A0\u00A0\u00A0': letter}</span>
