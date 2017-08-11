@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const Guesses = ({ guesses = [] }) => (
     <div className={'guesses'} >
-		<h1>Guesses:</h1>
+		<h1>Guesses</h1>
 		<div className={ 'guess-letters' }>
 			{ guesses.join(',') }
 		</div>

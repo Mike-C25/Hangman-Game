@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 let Screen = ({ board = [], category = "" }) => {
 
     return (
-        <div className ={ "screen-word"}>
+     
+        <div className ={ `screen-word ${category}`}>
             <h3>The theme is currently { category }</h3>
             <div className={`${category}`}> </div>
         	<div className={ 'letters'}>

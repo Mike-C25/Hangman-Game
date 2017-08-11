@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 let ScoreHeader = ({ attemptCount = 0, maxAttempts = 0, wordLength = 0, foundLetters = 0 }) => {
     return (
         <div className="header-stats">
+        <h1 className="header">Hangman Game!</h1>
             <h1>
         		<span className="attempt-count">Attempts: { attemptCount } / { maxAttempts }</span>
         		<span className="letter-count">Letters: { foundLetters } / { wordLength }</span>

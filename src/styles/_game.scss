@@ -1,11 +1,23 @@
+$yel: #EEC25E;
+
+$sal: #F79D84;
+
+$gr: #59CD90;
+
+$bl: #39A0ED;
+
+$r: #EE6352;
+
+
 .game-container {
     background: #f2f2f2;
     border: 1px solid #cdcdcd;
     max-width: 1200px;
-    height: 800px;
+    height: 860px;
     margin: 0px auto;
     position: relative;
     overflow: hidden;
+    
 }
 
 .main-menu {
@@ -14,6 +26,9 @@
 }
 
 .header-stats {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 20px;
     span {
         display: inline-block;
     }
@@ -22,9 +37,11 @@
 .guesses {
     float: right;
     width: 30%;
+    text-align: center;
     h1 {
-        color: blue;
+        color: black;
         font-size: 30px;
+        font-style: italic;
     }
 }
 
@@ -38,9 +55,19 @@
     display: block;
     background-size: cover;
     width: 65%;
-    min-height: 720px;
+    min-height: 640px;
+    border: 4px solid #cdcdcd;
     background-repeat: no-repeat;
     background-position: center;
+    margin-left: 40px;
+    &.countries {
+        background: #21315a;
+        color: white;
+    }
+    &.movies{
+        background: black;
+        color: white;
+    }
     .foods {
         background-image: url('./images/food.png');
         height: 42px;
