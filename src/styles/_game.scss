@@ -13,8 +13,8 @@
     height: 100%;
 }
 
-.header-stats{
-    span{
+.header-stats {
+    span {
         display: inline-block;
     }
 }
@@ -38,21 +38,71 @@
     display: block;
     background-size: cover;
     width: 65%;
-    min-height: 475px;
+    min-height: 720px;
     background-repeat: no-repeat;
     background-position: center;
+    .foods {
+        background-image: url('./images/food.png');
+        height: 42px;
+        background-repeat: repeat;
+        background-size: auto 100%;
+        -webkit-animation: sliderleft 70s linear infinite;
+        -moz-animation: sliderleft 70s linear infinite;
+    }
+    .countries {
+        background-image: url('./images/earthleaf.gif');
+        background-size: contain;
+        height: 118px;
+        -webkit-animation: sliderleft 150s linear infinite;
+        -moz-animation: sliderleft 150s linear infinite;
+    }
+    .movies {
+        background-image: url('./images/filmstrip.png');
+        height: 90px;
+        background-repeat: repeat;
+        background-size: auto 100%;
+        -webkit-animation: sliderleft 60s linear infinite;
+        -moz-animation: sliderleft 60s linear infinite;
+    }
 }
 
-.letters{
+@-webkit-keyframes sliderleft {
+
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -10000px 0;
+    }
+}
+
+@-moz-keyframes sliderleft {
+
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -10000px 0;
+    }
+}
+
+.letters {
     position: relative;
     top: 150px;
 }
 
-.guess-letters{
+.guess-letters {
     font-size: 30px;
 }
 
-.game-over{
+.game-over {
     width: 100%;
     height: 100%;
+}
+
+
+.attempt-count {}
+
+.letter-count {
+    float: right;
 }

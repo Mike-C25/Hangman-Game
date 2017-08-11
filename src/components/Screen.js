@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 let Screen = ({ board = [], category = "" }) => {
 
     return (
-        <div className = { "screen-word" } >
+        <div className ={ "screen-word"}>
             <h3>The theme is currently { category }</h3>
+            <div className={`${category}`}> </div>
         	<div className={ 'letters'}>
         		{ board.map((letter, index) => (
         			<span key={ index }>{ letter === ' ' ? '\u00A0\u00A0\u00A0': letter}</span>
@@ -20,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
     // Update props for Game component based on new state
     // After returning new props, render will be called
     let { game } = state;
-    let { answer, guesses } = game;
+    let { answer, guesses, category } = game;
 
     if (!answer)
     	return {}
