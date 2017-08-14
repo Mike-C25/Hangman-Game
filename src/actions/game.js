@@ -35,7 +35,7 @@ export const startNewGame = () => {
     "clams", "coffee", "cookies", "corn", "cupcakes", "crab", "curry", 
     "cereal", "chimichanga", "dates", "dips", "duck", "dumplings", 
     "donuts", "eggs", "enchilada", "eggrolls", "English muffins", "edimame", 
-    "eel sushi", "fajita", "falafel", "fish", "franks", "fondu", 
+    "eel sushi", "fajita", "falafel", "fish", "franks", "fondue", 
     "French toast", "French dip", "Garlic", "ginger", "gnocchi", "goose", 
     "granola", "grapes", "green beans", "Guancamole", "gumbo", "grits", 
     "Graham crackers", "ham", "halibut", "hamburger", "honey", "huenos rancheros", 

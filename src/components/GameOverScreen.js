@@ -17,7 +17,7 @@ class GameOverScreen extends Component {
 
     componentWillUnmount(){
     	document.removeEventListener('click', this.props.onClick)
-    }
+    }	
 
  
     render() {

@@ -36,7 +36,6 @@ class Game extends Component {
     	// So rerender
         return (
             <div className={ 'game-container' }>
-                <GameLogic />
 
                 { gameState === 'menu' ? (
                     <GameMainMenu />
@@ -44,9 +43,10 @@ class Game extends Component {
 
                 { gameState === 'playing' ? (
                     <div>
-                        <ScoreHeader />
-                        <Screen category={category} />
-                        <Guesses />
+                        <GameLogic />
+                        <Screen category={category}>
+                        </Screen>
+                       
                     </div>
                 ) : null }
 

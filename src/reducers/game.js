@@ -1,6 +1,6 @@
 const calculateGameStats = (state) => {
 
-    let { answer, guesses } = state;
+    let { answer, guesses, lives, guessStatus } = state;
 
     if (!answer || !guesses)
         return {};
@@ -19,6 +19,8 @@ const calculateGameStats = (state) => {
     }, 0)
 
 
+
+
     let incorrectGuesses = guesses.reduce((acc, val) => {
 
         if (answer.toLowerCase().indexOf(val.toLowerCase()) === -1) {
@@ -28,16 +30,26 @@ const calculateGameStats = (state) => {
     }, [])
 
     let attemptCount = incorrectGuesses.length;
-    let maxAttempts = 6;
+    // let lives = 6;
+    // console.log(attemptCount);
+
+    // lives = lives - attemptCount;
+    // console.log(lives);
+
+    console.log(guessStatus);
+    if (guessStatus === "incorrect") {
+        lives -= 1;
+    }
 
     let tA = answer;
     tA = tA.replace(/\s/g, '');;
     let wordLength = tA.length;
 
 
+
     return {
         attemptCount,
-        maxAttempts,
+        lives,
         wordLength,
         foundLetters,
         incorrectGuesses
@@ -47,26 +59,47 @@ const calculateGameStats = (state) => {
 
 
 
-const game = (state = { guesses: [] }, action) => {
+const game = (state = { guesses: [], lives: 6, guessStatus: "invalid"}, action) => {
     switch (action.type) {
         case 'LETTER_GUESS':
             {
+
+                // console.log(guessed);
                 // 6: Generate new state with ALL new variables
                 let guesses = [].concat(state.guesses);
+                let gStatus = "";
+                if (state.answer.toLowerCase().indexOf(action.letter) === -1) {
+                    gStatus = "incorrect";
+                } else {
+                    console.log(guesses, action.letter);
+                    if (guesses.indexOf(action.letter) === -1) {
+                        gStatus = "correct";
+                    } else {
+                        gStatus = "invalid";
+                    }
+                }
+
                 if (guesses.indexOf(action.letter) === -1) {
                     guesses.push(action.letter);
                 }
                 // 7: Return the new state object
                 // Go back to Game component
 
+
+
                 let newState = Object.assign({}, state, { guesses: guesses });
                 newState.stats = calculateGameStats(newState);
+                newState.lives = newState.stats.lives;
+                newState.guessStatus = gStatus;
 
-                if (newState.stats.attemptCount === 6) {
+
+
+                if (newState.lives  === 0) {
                     newState.status = 'lost';
                 }
-                if (newState.stats.attemptCount < 6 && newState.stats.foundLetters === newState.stats.wordLength) {
+                if (newState.lives > 0 && newState.stats.foundLetters === newState.stats.wordLength) {
                     newState.status = 'won'
+                    newState.lives++;
 
                 }
 
@@ -80,6 +113,7 @@ const game = (state = { guesses: [] }, action) => {
                     answer: action.answer,
                     category: action.category,
                     status: 'playing',
+                    // lives: lives,
                     guesses: []
                 });
                 newState.stats = calculateGameStats(newState);

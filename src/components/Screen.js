@@ -1,18 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Guesses from './Guesses'
+import ScoreHeader from './ScoreHeader'
+
 let Screen = ({ board = [], category = "" }) => {
 
     return (
-     
+
         <div className ={ `screen-word ${category}`}>
+            <ScoreHeader />
             <h3>The theme is currently { category }</h3>
             <div className={`${category}`}> </div>
-        	<div className={ 'letters'}>
-        		{ board.map((letter, index) => (
-        			<span key={ index }>{ letter === ' ' ? '\u00A0\u00A0\u00A0': letter}</span>
-        		))}
-        	</div>
+            <div className={ 'letters'}>
+                { board.map((letter, index) => (
+                    <span key={ index }>{ letter === ' ' ? '\u00A0\u00A0\u00A0': letter}</span>
+                ))}     
+            </div>
+            <Guesses />
         </div>
     )
 }
@@ -25,19 +30,19 @@ const mapStateToProps = (state, ownProps) => {
     let { answer, guesses, category } = game;
 
     if (!answer)
-    	return {}
+        return {}
 
     let board = answer.split('').map((letter) => {
-            if (letter === ' ') {
-                return ' ';
+        if (letter === ' ') {
+            return ' ';
+        } else {
+            if (guesses.indexOf(letter.toLowerCase()) !== -1) {
+                return letter + ' ';
             } else {
-                if (guesses.indexOf(letter.toLowerCase()) !== -1) {
-                    return letter + ' ';
-                } else {
-                    return '_ ' ;
-                }
+                return '_ ';
             }
-        })
+        }
+    })
 
 
     return Object.assign({}, {
