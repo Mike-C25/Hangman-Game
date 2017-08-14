@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ScoreHeader from './ScoreHeader'
+
 import GameOverScreen from './GameOverScreen'
 import GameLogic from './GameLogic'
 import GameMainMenu from './GameMainMenu'
-import Guesses from './Guesses'
 import Screen from './Screen'
 
-import { onLetterGuess, startNewGame } from '../actions/game'
+import { startNewGame } from '../actions/game'
 
 class Game extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+
+    // }
 
     componentDidMount() {
         this.props.startNewGame()
@@ -21,16 +21,7 @@ class Game extends Component {
 
     render() {
 
-        let { gameState, answer, guesses, category } = this.props;
-
-
-        let incorrectGuesses = guesses.reduce((acc, val) => {
-            if (answer.indexOf(val) === -1) {
-                acc.push(val);
-            }
-            return acc;
-        }, [])
-
+        let { gameState, answer, category } = this.props;
 
     	// 9: Either the state or props were changes
     	// So rerender

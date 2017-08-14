@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { onLetterGuess } from '../actions/game'
 
 class GameLogic extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     componentDidMount() {
         document.addEventListener('keydown', this.props.onKeyDown);
@@ -30,7 +30,6 @@ const mapStateToProps = (state, ownProps) => {
     // Update props for Game component based on new state
     // After returning new props, render will be called
     let { game } = state;
-    let { stats } = game;
     
     return Object.assign({}, {
         letters: game.letters

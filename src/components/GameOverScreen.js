@@ -7,9 +7,9 @@ import { startNewGame } from '../actions/game'
 
 class GameOverScreen extends Component {
    
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     componentDidMount(){
     	document.addEventListener('click', this.props.onClick)
@@ -51,9 +51,7 @@ class GameOverScreen extends Component {
 
 }
 
-const mapStateToProps = (state, ownProps ) => {
-	return {};
-}
+
 
 const mapDispatchToProps = (dispatch) => {
 	return{

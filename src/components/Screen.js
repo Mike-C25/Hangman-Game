@@ -27,7 +27,7 @@ const mapStateToProps = (state, ownProps) => {
     // Update props for Game component based on new state
     // After returning new props, render will be called
     let { game } = state;
-    let { answer, guesses, category } = game;
+    let { answer, guesses } = game;
 
     if (!answer)
         return {}

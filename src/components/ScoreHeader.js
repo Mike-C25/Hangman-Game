@@ -16,11 +16,11 @@ const transitionStyles = {
 };
 
 class ScoreHeader extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     render() {
-        let { lives = 6, attemptCount = 0, maxAttempts = 0, wordLength = 0, foundLetters = 0 } = this.props;
+        let { lives = 6, wordLength = 0, foundLetters = 0 } = this.props;
 
         return (
             <div className="header-stats">
@@ -29,8 +29,8 @@ class ScoreHeader extends Component {
                     <span className="attempt-count">Lives:
                         <TransitionGroup>
                             {
-                                [...Array(Math.max(lives, 0))].map(() => (
-                                    <Transition>
+                                [...Array(Math.max(lives, 0))].map((_,i) => (
+                                    <Transition key={i} timeout={ duration }>
                                         { (status) => (<div className="heart" style={{ 
                                             ...defaultStyle, 
                                             ...transitionStyles[status]
