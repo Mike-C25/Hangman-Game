@@ -25,8 +25,8 @@ class ScoreHeader extends Component {
         return (
             <div className="header-stats">
                 <h1 className="header">Hangman Game!</h1>
-                <h1>
-                    <span className="attempt-count">Lives:
+                
+                    <span className="attempt-count"><h2>Lives:</h2>
                         <TransitionGroup>
                             {
                                 [...Array(Math.max(lives, 0))].map((_,i) => (
@@ -40,8 +40,8 @@ class ScoreHeader extends Component {
                             }
                         </TransitionGroup>
                     </span>
-                    <span className="letter-count">Letters: { foundLetters } / { wordLength }</span>
-                </h1>
+                    <span className="letter-count"><h2>Letters: { foundLetters } / { wordLength }</h2></span>
+                
             </div>
         );
     }

@@ -15,14 +15,18 @@ body {
   background: white;
   height: 100%; }
 
+.header {
+  margin: 15px 0px 0px 0px; }
+
 .header-stats {
+  position: relative;
   margin-left: 15px;
   margin-right: 15px;
   padding: 20px; }
   .header-stats span {
     display: inline-block; }
   .header-stats .heart {
-    background: url("./images/heart.png");
+    background: url("./images/heart2.png");
     background-size: contain;
     display: inline-block;
     height: 40px;
@@ -80,8 +84,9 @@ body {
     background-size: auto 100%;
     -webkit-animation: sliderleft 60s linear infinite;
     -moz-animation: sliderleft 60s linear infinite; }
-  .screen-word h3 {
-    padding: 40px 0px; }
+  .screen-word .theme-text {
+    display: block;
+    text-align: center; }
 
 @-webkit-keyframes sliderleft {
   from {
@@ -107,7 +112,8 @@ body {
   height: 100%; }
 
 .attempt-count {
-  float: left; }
+  text-align: left;
+  width: 75%; }
 
 .letter-count {
   float: right; }

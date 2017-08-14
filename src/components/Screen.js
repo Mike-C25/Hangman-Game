@@ -10,7 +10,9 @@ let Screen = ({ board = [], category = "" }) => {
 
         <div className ={ `screen-word ${category}`}>
             <ScoreHeader />
-            <h3>The theme is currently { category }</h3>
+            <div className="theme-text">
+                <h3>The theme is currently <span>{ category }</span></h3>
+            </div>
             <div className={`${category}`}> </div>
             <div className={ 'letters'}>
                 { board.map((letter, index) => (
