@@ -36,10 +36,12 @@ const calculateGameStats = (state) => {
     // lives = lives - attemptCount;
     // console.log(lives);
 
-    console.log(guessStatus);
+    // console.log(guessStatus);
     if (guessStatus === "incorrect") {
         lives -= 1;
     }
+
+    lives = lives < 0 ? 6 : lives;
 
     let tA = answer;
     tA = tA.replace(/\s/g, '');;
@@ -71,7 +73,7 @@ const game = (state = { guesses: [], lives: 6, guessStatus: "invalid"}, action) 
                 if (state.answer.toLowerCase().indexOf(action.letter) === -1) {
                     gStatus = "incorrect";
                 } else {
-                    console.log(guesses, action.letter);
+                    // console.log(guesses, action.letter);
                     if (guesses.indexOf(action.letter) === -1) {
                         gStatus = "correct";
                     } else {
@@ -113,7 +115,8 @@ const game = (state = { guesses: [], lives: 6, guessStatus: "invalid"}, action) 
                     answer: action.answer,
                     category: action.category,
                     status: 'playing',
-                    // lives: lives,
+                    lives: state.lives === 0 ? 6 : state.lives,
+                    guessStatus: "invalid",
                     guesses: []
                 });
                 newState.stats = calculateGameStats(newState);

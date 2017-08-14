@@ -29,7 +29,7 @@ class ScoreHeader extends Component {
                     <span className="attempt-count">Lives:
                         <TransitionGroup>
                             {
-                                [...Array(lives)].map(() => (
+                                [...Array(Math.max(lives, 0))].map(() => (
                                     <Transition>
                                         { (status) => (<div className="heart" style={{ 
                                             ...defaultStyle, 
