@@ -22,7 +22,6 @@ const calculateGameStats = (state) => {
 
 
     let incorrectGuesses = guesses.reduce((acc, val) => {
-
         if (answer.toLowerCase().indexOf(val.toLowerCase()) === -1) {
             acc.push(val);
         }
@@ -36,7 +35,7 @@ const calculateGameStats = (state) => {
     // lives = lives - attemptCount;
     // console.log(lives);
 
-    // console.log(guessStatus);
+    console.log(guessStatus);
     if (guessStatus === "incorrect") {
         lives -= 1;
     }
@@ -61,17 +60,18 @@ const calculateGameStats = (state) => {
 
 
 
-const game = (state = { guesses: [], lives: 6, guessStatus: "invalid"}, action) => {
+const game = (state = { guesses: [], lives: 6, guessStatus: "invalid" }, action) => {
     switch (action.type) {
         case 'LETTER_GUESS':
             {
-
-                // console.log(guessed);
-                // 6: Generate new state with ALL new variables
                 let guesses = [].concat(state.guesses);
                 let gStatus = "";
                 if (state.answer.toLowerCase().indexOf(action.letter) === -1) {
-                    gStatus = "incorrect";
+                    if (state.stats.incorrectGuesses.indexOf(action.letter) === -1) {
+                        gStatus = "incorrect";
+                    }else{
+                        gStatus = "invalid";
+                    }
                 } else {
                     // console.log(guesses, action.letter);
                     if (guesses.indexOf(action.letter) === -1) {
@@ -84,19 +84,17 @@ const game = (state = { guesses: [], lives: 6, guessStatus: "invalid"}, action) 
                 if (guesses.indexOf(action.letter) === -1) {
                     guesses.push(action.letter);
                 }
-                // 7: Return the new state object
-                // Go back to Game component
+             
 
 
-
-                let newState = Object.assign({}, state, { guesses: guesses });
+                let newState = Object.assign({}, state, { guessStatus: gStatus, guesses: guesses });
                 newState.stats = calculateGameStats(newState);
                 newState.lives = newState.stats.lives;
                 newState.guessStatus = gStatus;
 
 
 
-                if (newState.lives  === 0) {
+                if (newState.lives === 0) {
                     newState.status = 'lost';
                 }
                 if (newState.lives > 0 && newState.stats.foundLetters === newState.stats.wordLength) {

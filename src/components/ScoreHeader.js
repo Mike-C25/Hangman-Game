@@ -4,7 +4,7 @@ import { TransitionGroup, Transition } from 'react-transition-group';
 
 //change to
 
-const duration = 750;
+const duration = 400;
 const defaultStyle = {
     transition: `opacity ${ duration }ms ease-in-out`,
     opacity: 1,
