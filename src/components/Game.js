@@ -45,6 +45,7 @@ class Game extends Component {
                     <GameOverScreen status={ gameState } answer={ answer }/>
                 ) : null }
 			</div>
+            // <Source />
 
         );
     }

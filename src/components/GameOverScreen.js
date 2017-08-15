@@ -29,7 +29,7 @@ class GameOverScreen extends Component {
 	        	<div className={ "end-screen" }>
 					<h1>You { status }</h1>
 					<h4>The answer was "{ answer }"</h4>
-					<h2>Click anywhere to start a new game</h2>
+					<h2>You've gained 1 life! Click anywhere to continue</h2>
 
 				</div>
         		) : (

@@ -35,7 +35,7 @@ const calculateGameStats = (state) => {
     // lives = lives - attemptCount;
     // console.log(lives);
 
-    console.log(guessStatus);
+
     if (guessStatus === "incorrect") {
         lives -= 1;
     }
