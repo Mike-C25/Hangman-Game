@@ -26,14 +26,15 @@ class GameOverScreen extends Component {
         return (
             <div className={ 'game-over' }>
 			{ status  === 'won' ? (
-	        	<div className={ "end-screen" }>
-					<h1>You { status }</h1>
-					<h4>The answer was "{ answer }"</h4>
-					<h2>You've gained 1 life! Click anywhere to continue</h2>
+	        	<div className={ "end-screen won" }>
+					<h1>You { status } !</h1>
+					<h4>You guessed the right answer: "{ answer }"</h4>
+                    <div className="reward">You've gained 1 <div className="heart"></div></div>
+					<h2> Click anywhere to continue</h2>
 
 				</div>
         		) : (
-	        	<div className={ "end-screen" } >
+	        	<div className={ "end-screen lost" } >
 					<h1>You { status } !</h1>
 					<h4>You guessed the right answer: "{ answer }"</h4>
 					<h2>Click anywhere to start a new game</h2>
