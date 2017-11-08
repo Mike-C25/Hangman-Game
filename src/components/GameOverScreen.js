@@ -36,7 +36,7 @@ class GameOverScreen extends Component {
         		) : (
 	        	<div className={ "end-screen lost" } >
 					<h1>You { status } !</h1>
-					<h4>You guessed the right answer: "{ answer }"</h4>
+					<h4>The right answer was: "{ answer }"</h4>
 					<h2>Click anywhere to start a new game</h2>
 				</div>
         		)
